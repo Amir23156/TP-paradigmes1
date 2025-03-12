@@ -6,15 +6,15 @@
 
 class Multimedia {
 protected:
-    std::string nom;      // Nom de l'objet multimédia
-    std::string fichier;  // Chemin du fichier associé
+    std::string nom;      // Nom du fichier
+    std::string fichier;  // Chemin du fichier
 
 public:
-    // Constructeurs
+    // Constructeur
     Multimedia() = default;
     Multimedia(const std::string& nom, const std::string& fichier);
 
-    // Destructeur (virtuel pour support d'héritage)
+    // Destructeur virtuel
     virtual ~Multimedia() = default;
 
     // Getters
@@ -25,12 +25,14 @@ public:
     void setNom(const std::string& nom) { this->nom = nom; }
     void setFichier(const std::string& fichier) { this->fichier = fichier; }
 
-    // Méthode d'affichage
+    // Méthode d'affichage (Polymorphe)
     virtual void afficher(std::ostream& os) const;
-    
-    // Surcharge de l'opérateur << pour afficher l'objet directement
-    friend std::ostream& operator<<(std::ostream& flux, const Multimedia& m);
 
+    // Méthode pure virtuelle pour jouer le média (rend la classe abstraite)
+    virtual void jouer() const = 0;
+
+    // Surcharge de l'opérateur <<
+    friend std::ostream& operator<<(std::ostream& flux, const Multimedia& m);
 };
 
 #endif // MULTIMEDIA_H

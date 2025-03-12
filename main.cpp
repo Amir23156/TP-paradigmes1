@@ -5,12 +5,23 @@
 
 #include <iostream>
 #include "Multimedia.h"
+#include "Photo.h"
+#include "Video.h"
 using namespace std;
 
-int main(int argc, const char* argv[])
-{
-    Multimedia obj1("Photo1", "Telecom_Paris_main_court.jpg");
-    obj1.afficher(std::cout);
-    std::cout << "Hello brave new world" << std::endl;
+int main() {
+    // Créer une photo et une vidéo
+    Photo p("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
+    Video v("Documentary", "CutePuppies.mp4", 105);
+
+    // Afficher les objets
+    std::cout << p << std::endl;
+    std::cout << v << std::endl;
+
+    // Jouer les objets
+    p.jouer();
+    v.jouer();
+
     return 0;
 }
+
