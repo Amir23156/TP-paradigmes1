@@ -15,7 +15,13 @@ public:
     Multimedia(const std::string& nom, const std::string& fichier);
 
     // Destructeur virtuel
-    virtual ~Multimedia() = default;
+    //virtual ~Multimedia() = default;
+
+    //Destructeyr 9eme Etape
+    virtual ~Multimedia() {
+        std::cout << " Suppression de l'objet Multimedia: " << nom << std::endl;
+    }
+    
 
     // Getters
     std::string getNom() const { return nom; }

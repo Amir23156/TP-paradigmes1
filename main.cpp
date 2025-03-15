@@ -80,7 +80,7 @@ int main() {
     film2.afficher(std::cout);*/
 
     //*****8eme Etape *****/
-    auto photo1 = new Photo("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
+    /*auto photo1 = new Photo("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
     auto photo2 = new Photo("Sunset", "sunset.jpg", 37.7749, -122.4194);
     auto video1 = new Video("CuteKittens", "CuteKittens.mp4", 60);
     
@@ -110,7 +110,47 @@ int main() {
     delete photo1;
     delete photo2;
     delete video1;
-    delete film1;
-    
+    delete film1;*/
+
+    //*********9eme Partie ********/
+    // Création d'objets avec std::shared_ptr
+    auto photo1 = std::make_shared<Photo>("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
+    auto photo2 = std::make_shared<Photo>("Sunset", "sunset.jpg", 37.7749, -122.4194);
+    auto video1 = std::make_shared<Video>("Cutekittens", "Cutekittens.mp4", 60);
+
+    int chapitres[] = {34, 50, 19};
+    auto film1 = std::make_shared<Film>("CutePuppies", "CutePuppies.mp4", 103, chapitres, 3);
+
+    // Création des groupes
+    Groupe groupePhotos("Photos de Voyage");
+    groupePhotos.ajouter(photo1);
+    groupePhotos.ajouter(photo2);
+
+    Groupe groupeVideos("Vidéos et Films");
+    groupeVideos.ajouter(video1);
+    groupeVideos.ajouter(film1);
+
+    Groupe groupeMixtes("Souvenirs Divers");
+    groupeMixtes.ajouter(photo1);
+    groupeMixtes.ajouter(film1);
+
+    // Affichage des groupes
+    std::cout << "\n=== Affichage des Groupes ===\n";
+    groupePhotos.afficher(std::cout);
+    groupeVideos.afficher(std::cout);
+    groupeMixtes.afficher(std::cout);
+
+    // Suppression des groupes (mais pas encore des objets car ils sont partagés)
+    std::cout << "\n Suppression du groupe Photos de Voyage...\n";
+    groupePhotos.clear(); // Les objets existent encore car ils sont dans d'autres groupes
+
+    std::cout << "\n Suppression du groupe Vidéos et Films...\n";
+    groupeVideos.clear(); // `film1` existe toujours dans groupeMixtes
+
+    std::cout << "\n Suppression du groupe Souvenirs Divers...\n";
+    groupeMixtes.clear(); // `film1` et `photo1` ne sont plus référencés → doivent être détruits
+
+    // Vérification : Si `film1` et `photo1` ne sont plus référencés, ils seront supprimés ici
+    std::cout << "\n Fin du programme. Tous les objets inutilisés devraient être détruits !\n";
     return 0;
 }
