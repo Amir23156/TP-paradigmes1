@@ -9,20 +9,22 @@ private:
     int nbChapitres = 0;    // Nombre de chapitres
 
 public:
-    // Constructeurs
+    // Constructeurs et destructeur
     Film() = default;
     Film(std::string nom, std::string fichier, int dureeTotale, const int* chapitres, int nbChapitres);
+    ~Film(); // Déstructeur
 
-    // Destructeur
-    virtual ~Film();
+    // Copie et assignation (Règle des 3)
+    Film(const Film& other);  // Constructeur de copie
+    Film& operator=(const Film& other); // Opérateur d'affectation
 
-    // Modifieur : Met à jour les chapitres
+    // Modifieur
     void setChapitres(const int* chapitres, int nbChapitres);
 
-    // Accesseur : Retourne une copie des chapitres
+    // Accesseur
     const int* getChapitres(int& outNbChapitres) const;
 
-    // Affichage des chapitres
+    // Affichage
     void afficher(std::ostream& os) const override;
 };
 

@@ -39,7 +39,7 @@ int main() {
  
     //*****6eme Partie******
     // Définition des chapitres (durées en secondes)
-    int chapitres1[] = {34, 50, 19}; // 3 chapitres de 2min, 2min30s, 3min
+    /*int chapitres1[] = {34, 50, 19}; // 3 chapitres de 2min, 2min30s, 3min
 
     // Création du Film
     Film f("CutePuppies", "CutePuppies.mp4", 103, chapitres1, 3);
@@ -54,8 +54,29 @@ int main() {
 
     // Affichage après modification
     std::cout << "\n Film Après Modification:" << std::endl;
-    f.afficher(std::cout);
+    f.afficher(std::cout);*/
 
+    //*****7eme Etape*****/
+    int chapitres1[] = {34, 50, 19}; 
+    Film film1("CutePuppies", "CutePuppies.mp4", 103, chapitres1, 3);
+
+    std::cout << "\n Film 1 (Original):\n";
+    film1.afficher(std::cout);
+
+    // Copie de l'objet
+    Film film2 = film1;
+    std::cout << "\n Film 2 (Copie de Film 1):\n";
+    film2.afficher(std::cout);
+
+    // Modification des chapitres de film1 (ne doit pas affecter film2)
+    int chapitres2[] = {25, 25, 25, 28};
+    film1.setChapitres(chapitres2, 4);
+
+    std::cout << "\n Film 1 Après Modification:\n";
+    film1.afficher(std::cout);
+
+    std::cout << "\n Film 2 (Ne doit pas être modifié !):\n";
+    film2.afficher(std::cout);
     
     return 0;
 }
