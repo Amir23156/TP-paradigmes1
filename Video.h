@@ -27,7 +27,7 @@ public:
 
     // Méthode pour lire la vidéo avec un programme externe
     void jouer() const override {
-        std::string command = "mpv " + fichier + " &";
+        std::string command = "mpv --ao=pulse  " + fichier + " &";
         system(command.data());
     }
 };
