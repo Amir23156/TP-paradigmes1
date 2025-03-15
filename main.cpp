@@ -10,6 +10,7 @@
 #include "Photo.h"
 #include "Video.h"
 #include "Film.h"
+#include "Groupe.h"
 
 using namespace std;
 
@@ -57,7 +58,7 @@ int main() {
     f.afficher(std::cout);*/
 
     //*****7eme Etape*****/
-    int chapitres1[] = {34, 50, 19}; 
+    /*int chapitres1[] = {34, 50, 19}; 
     Film film1("CutePuppies", "CutePuppies.mp4", 103, chapitres1, 3);
 
     std::cout << "\n Film 1 (Original):\n";
@@ -76,7 +77,40 @@ int main() {
     film1.afficher(std::cout);
 
     std::cout << "\n Film 2 (Ne doit pas être modifié !):\n";
-    film2.afficher(std::cout);
+    film2.afficher(std::cout);*/
+
+    //*****8eme Etape *****/
+    auto photo1 = new Photo("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
+    auto photo2 = new Photo("Sunset", "sunset.jpg", 37.7749, -122.4194);
+    auto video1 = new Video("CuteKittens", "CuteKittens.mp4", 60);
+    
+    int chapitres[] = {34, 50, 19};
+    auto film1 = new Film("CutePuppies", "CutePuppies.mp4", 103, chapitres, 3);
+
+    // Création des groupes
+    Groupe groupePhotos("Photos de Voyage");
+    groupePhotos.push_back(photo1);
+    groupePhotos.push_back(photo2);
+
+    Groupe groupeVideos("Vidéos et Films");
+    groupeVideos.push_back(video1);
+    groupeVideos.push_back(film1);
+
+    Groupe groupeMixtes("Souvenirs Divers");
+    groupeMixtes.push_back(photo1);
+    groupeMixtes.push_back(film1);
+
+    // Affichage des groupes
+    std::cout << "\n=== Affichage des Groupes ===\n";
+    groupePhotos.afficher(std::cout);
+    groupeVideos.afficher(std::cout);
+    groupeMixtes.afficher(std::cout);
+
+    // Nettoyage (les objets ne doivent pas être supprimés par le groupe)
+    delete photo1;
+    delete photo2;
+    delete video1;
+    delete film1;
     
     return 0;
 }
