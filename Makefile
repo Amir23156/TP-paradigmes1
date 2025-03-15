@@ -15,7 +15,7 @@ PROG = myprog
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
 #SOURCES = MyClass.cpp main.cpp
-SOURCES = Multimedia.cpp Film.cpp main.cpp 
+SOURCES = Multimedia.cpp Gestionnaire.cpp Film.cpp main.cpp 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
 #
@@ -32,7 +32,8 @@ CXX = c++
 #   -std=c++11 pour C++11
 # Exemple: CXXFLAGS= -std=c++11 -Wall -O -I/usr/local/qt/include
 #
-CXXFLAGS = -Wall -std=c++14 -g
+CXXFLAGS = -Wall -std=c++17 -g
+#CXXFLAGS = -Wall -std=c++14 -g
 #CXXFLAGS = -std=c++11 -Wall -g
 
 #

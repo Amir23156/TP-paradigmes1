@@ -11,6 +11,7 @@
 #include "Video.h"
 #include "Film.h"
 #include "Groupe.h"
+#include "Gestionnaire.h"
 
 using namespace std;
 
@@ -114,7 +115,7 @@ int main() {
 
     //*********9eme Partie ********/
     // Création d'objets avec std::shared_ptr
-    auto photo1 = std::make_shared<Photo>("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
+    /*auto photo1 = std::make_shared<Photo>("Eiffel Tower", "eiffeltower.jpg", 48.8584, 2.2945);
     auto photo2 = std::make_shared<Photo>("Sunset", "sunset.jpg", 37.7749, -122.4194);
     auto video1 = std::make_shared<Video>("Cutekittens", "Cutekittens.mp4", 60);
 
@@ -151,6 +152,27 @@ int main() {
     groupeMixtes.clear(); // `film1` et `photo1` ne sont plus référencés → doivent être détruits
 
     // Vérification : Si `film1` et `photo1` ne sont plus référencés, ils seront supprimés ici
-    std::cout << "\n Fin du programme. Tous les objets inutilisés devraient être détruits !\n";
+    std::cout << "\n Fin du programme. Tous les objets inutilisés devraient être détruits !\n";*/
+
+
+    //***********10eme Etape**********/
+    Gestionnaire gestion;
+
+    auto photo = gestion.creerPhoto("EiffelTower", "eiffel.jpg", 48.8584, 2.2945);
+    auto video = gestion.creerVideo("Cutekittens", "Cutekittens.mp4", 60);
+    int chapitres[] = {34, 50, 19};
+    auto film = gestion.creerFilm("CutePuppies", "CutePuppies.mp4", 103, chapitres, 3);
+
+    auto groupe1 = gestion.creerGroupe("Voyages");
+    groupe1->ajouter(photo);
+    groupe1->ajouter(film);
+
+    gestion.afficherGroupe("Voyages");
+    gestion.jouerObjet("CutePuppies");
+
+    gestion.supprimerObjet("CutePuppies");
+    gestion.afficherGroupe("Voyages");
+
+
     return 0;
 }
