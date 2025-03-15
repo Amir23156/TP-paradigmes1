@@ -9,11 +9,13 @@
 #include "Multimedia.h"
 #include "Photo.h"
 #include "Video.h"
+#include "Film.h"
 
 using namespace std;
 
 int main() {
-    // Création d'un vecteur de pointeurs uniques vers des objets Multimedia
+    //****5eme Partie*****
+    /*// Création d'un vecteur de pointeurs uniques vers des objets Multimedia
     vector<unique_ptr<Multimedia>> multimediaList;
 
     // Ajout d'une photo et d'une vidéo
@@ -33,7 +35,27 @@ int main() {
         media->jouer();  // Polymorphisme : appelle la bonne version de jouer()
     }
 
-    // Pas besoin de delete car std::unique_ptr gère la mémoire automatiquement !
+    // Pas besoin de delete car std::unique_ptr gère la mémoire automatiquement !*/
+ 
+    //*****6eme Partie******
+    // Définition des chapitres (durées en secondes)
+    int chapitres1[] = {34, 50, 19}; // 3 chapitres de 2min, 2min30s, 3min
+
+    // Création du Film
+    Film f("CutePuppies", "CutePuppies.mp4", 103, chapitres1, 3);
+
+    // Affichage du Film
+    std::cout << " Film Initial:" << std::endl;
+    f.afficher(std::cout);
+
+    // Modification des chapitres
+    int chapitres2[] = {25, 25, 25, 28}; // Nouveau découpage en 4 chapitres
+    f.setChapitres(chapitres2, 4);
+
+    // Affichage après modification
+    std::cout << "\n Film Après Modification:" << std::endl;
+    f.afficher(std::cout);
+
     
     return 0;
 }
